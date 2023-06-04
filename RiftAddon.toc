@@ -6,7 +6,7 @@ Description = "This addon provides you with all the tools to build custom action
 Author = "Naifu"
 Email = "naifukishi@gmail.com"
 
-Version = "1.2.4"
+Version = "1.2.5"
 Environment = "4.0"
 
 RunOnStartup = {
@@ -30,7 +30,3 @@ SavedVariables = {
    nkHeliosSetup 	   = "character",
    nkHeliosBars 	   = "account"
 }
--- X-Curse-Packaged-Version: V1.2.4
--- X-Curse-Project-Name: nkHelios
--- X-Curse-Project-ID: nkhelios
--- X-Curse-Repository-ID: rift/nkhelios/mainline
