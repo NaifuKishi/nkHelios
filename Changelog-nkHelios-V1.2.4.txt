@@ -1,0 +1,22 @@
+------------------------------------------------------------------------
+r41 | naifu | 2016-11-26 21:14:52 +0000 (Sat, 26 Nov 2016) | 1 line
+Changed paths:
+   A /tags/V1.2.4 (from /trunk:40)
+
+Tagging as V1.2.4
+------------------------------------------------------------------------
+r40 | naifu | 2016-11-26 20:31:10 +0000 (Sat, 26 Nov 2016) | 2 lines
+Changed paths:
+   M /trunk/RiftAddon.toc
+   M /trunk/main.lua
+
+now supports more than 8 roles
+some bug fixes
+------------------------------------------------------------------------
+r38 | naifu | 2016-11-25 18:00:00 +0000 (Fri, 25 Nov 2016) | 1 line
+Changed paths:
+   M /trunk/RiftAddon.toc
+   M /trunk/events.lua
+
+initialization bug fix 
+------------------------------------------------------------------------

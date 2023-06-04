@@ -1,0 +1,36 @@
+Identifier = "nkHelios"
+Name = "Naifu's Action Bar Addon"
+NameShort ="nkHelios"
+Description = "This addon provides you with all the tools to build custom action bars. You can build as many action bars as you like and choose the design. Action bars can be made interactive so that you can click on them to execute abilities, use items and run macros.\n\nEnter \nkHelios or \nkH to open the configuration.\n\nUnfortunately the Rift API does not allow to bind keys to addons. You'll have to configure your actions on the regular action bars of Rift. Replicate the bars with this addons and then hide the default bars in the UI settings. The key bindings will still work."
+
+Author = "Naifu"
+Email = "naifukishi@gmail.com"
+
+Version = "1.2.4"
+Environment = "4.0"
+
+RunOnStartup = {
+	"main.lua",
+	"locales/localizationEN.lua",
+	"locales/localizationDE.lua",
+	"actionbar.lua",
+	"events.lua",
+	"config.lua"
+}
+
+Embed = {	
+  ["Libs/EnKai"] = true
+}
+
+Dependencies = {
+  EnKai = {"required", "before"}
+}
+
+SavedVariables = {
+   nkHeliosSetup 	   = "character",
+   nkHeliosBars 	   = "account"
+}
+-- X-Curse-Packaged-Version: V1.2.4
+-- X-Curse-Project-Name: nkHelios
+-- X-Curse-Project-ID: nkhelios
+-- X-Curse-Repository-ID: rift/nkhelios/mainline
