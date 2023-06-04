@@ -31,12 +31,13 @@ local function _fctUpdateBarSelectValues() -- update bar selection combo
   	if privateVars.uiSelectedBar == nil or privateVars.uiSelectedBar > #bars then 
 		privateVars.uiSelectedBar = 1
 	end
-  
+
 	uiElements.config:GetTabPaneBars():GetBarSelect():SetSelection(selItems)
 	uiElements.config:GetTabPaneBars():GetTriggerTargetSelect():SetSelection(selItems)	
 	
 	uiElements.config:GetTabPaneBars():GetColsSlider():AdjustValue(bars[privateVars.uiSelectedBar].cols)
 	uiElements.config:GetTabPaneBars():GetRowsSlider():AdjustValue(bars[privateVars.uiSelectedBar].rows)
+	uiElements.config:GetTabPaneBars():GetPaddingSlider():AdjustValue(bars[privateVars.uiSelectedBar].padding or data.defaultBar.padding)
 	uiElements.config:GetTabPaneBars():GetScaleSlider():AdjustValue(bars[privateVars.uiSelectedBar].scale)	
 	uiElements.config:GetTabPaneBars():GetInteractiveCheckbox():SetChecked(bars[privateVars.uiSelectedBar].interactive or false)
 	uiElements.config:GetTabPaneBars():GetTriggerSelect():SetSelectedValue(bars[privateVars.uiSelectedBar].trigger)
@@ -240,9 +241,24 @@ local function _fctConfigTabBars (name, parent)
 			bars[privateVars.uiSelectedBar].rows = math.floor(newValue)
 			_internal.buildActionBars()
 		end, name .. 'rowsSlider' .. ".SliderChanged")
+
+		paddingSlider = EnKai.uiCreateFrame("nkSlider", name .. 'paddingSlider', frame)	
+		paddingSlider:SetPoint("TOPLEFT", rowsSlider, "BOTTOMLEFT", 0, 10)
+		paddingSlider:SetWidth(300)
+		paddingSlider:SetRange(0, 10)
+		paddingSlider:SetLabelWidth(150)
+		paddingSlider:SetText(privateVars.langTexts.paddingSlider)
+		paddingSlider:SetPrecision(1)
+		paddingSlider:AdjustValue(bars[privateVars.uiSelectedBar].padding)
+
+		Command.Event.Attach(EnKai.events[name .. 'paddingSlider'].SliderChanged, function (_, newValue)
+			if bars[privateVars.uiSelectedBar].padding == math.floor(newValue) then return end
+			bars[privateVars.uiSelectedBar].padding = math.floor(newValue)
+			_internal.buildActionBars()
+		end, name .. 'paddingSlider' .. ".SliderChanged")				
 		
 		scaleSlider = EnKai.uiCreateFrame("nkSlider", name .. 'scaleSlider', frame)	
-		scaleSlider:SetPoint("TOPLEFT", rowsSlider, "BOTTOMLEFT", 0, 10)
+		scaleSlider:SetPoint("TOPLEFT", paddingSlider, "BOTTOMLEFT", 0, 10)
 		scaleSlider:SetWidth(300)
 		scaleSlider:SetRange(20, 150)
 		scaleSlider:SetLabelWidth(150)
@@ -488,6 +504,7 @@ local function _fctConfigTabBars (name, parent)
 
 	function frame:GetColsSlider() return colsSlider end
 	function frame:GetRowsSlider() return rowsSlider end
+	function frame:GetPaddingSlider() return paddingSlider end
 	function frame:GetScaleSlider() return scaleSlider end
 	function frame:GetInteractiveCheckbox() return interactiveCheckbox end
 	function frame:GetBarSelect() return barSelect end
@@ -507,6 +524,7 @@ local function _fctConfigTabBars (name, parent)
 	function frame:destroy()
 		rowsSlider:destroy()
 		colsSlider:destroy()
+		paddingSlider:destroy()
 		scaleSlider:destroy()
 		interactiveCheckbox:destroy()
 		barSelect:destroy()

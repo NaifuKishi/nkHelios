@@ -23,6 +23,7 @@ if ( EnKai.tools.lang.getLanguage()  == "German") then
 		close               		= "Schliessen",
 		colsSlider					= "Anzahl Spalten %d",
 		rowsSlider					= "Anzahl Reihen %d",
+		paddingSlider				= "Abstand %d",
 		scaleSlider					= 'Grösse %d%%',
 		inCombatAlphaSlider			= 'Im Kampf %d%%',
 		outOfCombatAlphaSlider		= 'Ausserhalb Kampf %d%%',

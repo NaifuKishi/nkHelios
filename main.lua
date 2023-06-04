@@ -89,7 +89,7 @@ local function _settingsHandler(_, addon)
 
 	if addon == addonInfo.identifier then
 		
-		data.defaultBar = { name = string.format(privateVars.langTexts.txtBar, 1), layer = 1, show = true, interactive = false, vertical = false, trigger = "none", triggerTarget = nil, cols = 12, rows = 1, scale = 100, x = 300, y = 800, outOfCombatAlpha = 100, inCombatAlpha = 100, slots = {} }
+		data.defaultBar = { name = string.format(privateVars.langTexts.txtBar, 1), layer = 1, show = true, interactive = false, vertical = false, trigger = "none", triggerTarget = nil, cols = 12, rows = 1, scale = 100, x = 300, y = 800, outOfCombatAlpha = 100, inCombatAlpha = 100, slots = {}, padding = 0 }
 
 		if nkHeliosSetup ~= nil then -- move from character based config to account wide
 			if nkHeliosBars == nil then nkHeliosBars = {} end

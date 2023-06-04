@@ -687,7 +687,7 @@ function _internal.uiActionBar(name, parent, index, interactive)
 				thisSlot:SetVisible(false)				
 			end
 			
-			from, to, object, x, y = "CENTERLEFT", "CENTERRIGHT", thisSlot, 3, 0
+			from, to, object, x, y = "CENTERLEFT", "CENTERRIGHT", thisSlot, barSetup.padding, 0
 			
 			if count == 0 then 
 				if realFirstSlot == nil then realFirstSlot = thisSlot end
@@ -696,7 +696,7 @@ function _internal.uiActionBar(name, parent, index, interactive)
 			
 			count =  count + 1
 			if count == checkValue then
-				from, to, object, x, y = "CENTERTOP", "CENTERBOTTOM", firstSlot, 0, 1
+				from, to, object, x, y = "CENTERTOP", "CENTERBOTTOM", firstSlot, 0, barSetup.padding
 				count = 0
 			end
 			
@@ -720,13 +720,13 @@ function _internal.uiActionBar(name, parent, index, interactive)
 			setupFrame:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, - 20)
 			setupFrame:SetPoint("BOTTOMRIGHT", frame, "TOPRIGHT", 0, 0)						
 			
-			frame:SetWidth(lastSlot:GetWidth() * barSetup.rows + (barSetup.rows -1))
+			frame:SetWidth(lastSlot:GetWidth() * barSetup.rows + (barSetup.rows -1) + ((barSetup.padding or data.defaultBar.padding) * (barSetup.rows-1)))
 			frame:SetHeight(lastSlot:GetHeight() * barSetup.cols + (barSetup.cols -1))
 		else
 			setupFrame:SetPoint("TOPLEFT", frame, "TOPLEFT", -20, 0)
 			setupFrame:SetPoint("BOTTOMRIGHT", frame, "BOTTOMLEFT", 0, 0)			
 			
-			frame:SetWidth(lastSlot:GetWidth() * barSetup.cols + (barSetup.cols -1))
+			frame:SetWidth(lastSlot:GetWidth() * barSetup.cols + (barSetup.cols -1) + ((barSetup.padding or data.defaultBar.padding) * (barSetup.cols-1)))
 			frame:SetHeight(lastSlot:GetHeight() * barSetup.rows + (barSetup.rows -1))
 		end
 		

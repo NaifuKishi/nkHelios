@@ -22,6 +22,7 @@ if ( EnKai.tools.lang.getLanguage()  ~= "German") then
 		close               		= "Close",
 		colsSlider					= "No of cols %d",
 		rowsSlider					= "No of rows %d",
+		paddingSlider				= "Padding %d",
 		scaleSlider					= 'Scale %d%%',
 		inCombatAlphaSlider			= 'In Combat %d%%',
 		outOfCombatAlphaSlider		= 'Out of Combat %d%%',
