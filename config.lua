@@ -127,12 +127,6 @@ local function _fctBarCopy() -- copy existing set
   
 end
 
-local function _fctConfigCopy() -- copy existing design from another char
-
-	--local newConfig = EnKai.tools.table.copy (bars[privateVars.uiSelectedBar])
-
-end
-
 local function _fctConfigTabBars (name, parent)
 
 	local frame = EnKai.uiCreateFrame("nkFrame", name, parent)
@@ -450,12 +444,12 @@ local function _fctConfigTabBars (name, parent)
 		iconTop = EnKai.uiCreateFrame("nkTexture", name .. ".iconTop", frame)
 		iconTop:SetWidth(16)
 		iconTop:SetHeight(16)
-		iconTop:SetTextureAsync("EnKai", "gfx/small-arrowUp.png")
+		iconTop:SetTextureAsync("EnKai", "gfx/icons/small-arrowUp.png")
 		
 		iconBottom = EnKai.uiCreateFrame("nkTexture", name .. ".iconBottom", frame)
 		iconBottom:SetWidth(16)
 		iconBottom:SetHeight(16)
-		iconBottom:SetTextureAsync("EnKai", "gfx/small-arrowDown.png")
+		iconBottom:SetTextureAsync("EnKai", "gfx/icons/small-arrowDown.png")
 		
 		coordsLabel = EnKai.uiCreateFrame("nkText", name .. ".coordsLabel", frame)
 		
@@ -706,6 +700,7 @@ local function _fctConfigTabSettings (name, parent)
 			if charSelect:GetSelectedValue() == 'none' then return end
 			
 			local funcYes = function ()
+				
 				nkHeliosBars[EnKai.unit.getPlayerDetails().name] = EnKai.tools.table.copy(nkHeliosBars[charSelect:GetSelectedValue()])
 				
 				for roleId, roleDetails in pairs(nkHeliosBars[EnKai.unit.getPlayerDetails().name].roles) do
